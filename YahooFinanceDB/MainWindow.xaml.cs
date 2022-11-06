@@ -73,12 +73,9 @@ namespace YahooFinanceDB
                     return $"Актив {db.Tickers.Find(tickId)!.Name} {state}\nЦена осталась на уровне  " +
                            $"{db.Prices.Where(price => price.TickerId.Equals(tickId)).Select(price => price.Value[0].Val).First():f4}$";
                 }
-                else
-                {
-                    return $"Актив {db.Tickers.Find(tickId)!.Name} {state}\nс " +
-                           $"{db.Prices.Where(price => price.TickerId.Equals(tickId)).Select(price => price.Value[1].Val).First():f4}$ до " +
-                           $"{db.Prices.Where(price => price.TickerId.Equals(tickId)).Select(price => price.Value[0].Val).First():f4}$";
-                }
+                return $"Актив {db.Tickers.Find(tickId)!.Name} {state}\nс " +
+                       $"{db.Prices.Where(price => price.TickerId.Equals(tickId)).Select(price => price.Value[1].Val).First():f4}$ до " +
+                       $"{db.Prices.Where(price => price.TickerId.Equals(tickId)).Select(price => price.Value[0].Val).First():f4}$";
             });
             task.ContinueWith((t) =>
             {
@@ -99,7 +96,7 @@ namespace YahooFinanceDB
 
         private async void InitializeDb()
         {
-            MessageBox.Show("Начата загрузка базы данных");
+            MessageBox.Show("Начата загрузка базы данных. Это займёт около 10 секунд");
             var quotations = new List<string>();
             var ticks = new List<Ticker>();
             var prices = new List<Price>();
