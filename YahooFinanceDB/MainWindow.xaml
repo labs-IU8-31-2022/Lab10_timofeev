@@ -1,0 +1,33 @@
+﻿<Window x:Class="YahooFinanceDB.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YahooFinanceDB"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock>
+                Отслеживание изменений котировок
+            </TextBlock>
+            <ComboBox
+                x:Name="ComboBox1"
+                HorizontalAlignment="Left"
+                ItemsSource="{Binding TicksSorted}"
+                SelectedItem="{Binding SelectedTicker}"
+                IsEditable="True"
+                DisplayMemberPath="Name"
+                Width="200">
+            </ComboBox>
+            <Button x:Name="Button1" Background="Chartreuse" Width="200" Height="30" HorizontalAlignment="Left"
+                    Content="Получить изменение" Click="GetState" />
+            <TextBlock
+                x:Name="Text1" Height="55" Foreground="Green" FontSize="13"/>
+            <Button x:Name="Button3" Background="Plum" Width="200" Height="30" HorizontalAlignment="Left"
+                    Content="Click" Click="Count" />
+            <TextBlock
+                x:Name="Text2" Height="20" Foreground="Blue" FontSize="15"/>
+        </StackPanel>
+    </Grid>
+</Window>
